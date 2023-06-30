@@ -14,9 +14,10 @@ import AddIcon from '@mui/icons-material/Add';
 import { Typography } from "@mui/material";
 import Modal from '@mui/material/Modal';
 import { useErrorToast, useSuccessToast } from '../services/NotificationService';
+import DialogBox from '../components/DialogBox';
 
 const Callibration = () => {
-
+   
 
 
 
@@ -145,9 +146,20 @@ const Callibration = () => {
             sortable: false,
             renderCell: (params) =>
                 user?.isAdmin ? (
-                    <a href={'http://localhost:4040/callibration/downloadCallibration/' + params.row._id} download><Download /></a>
+                    <a style={{ color: "black" }} href={'http://localhost:4040/callibration/downloadCallibration/' + params.row._id} download><Download /></a>
                 ) : null,
         },
+        {
+            field: 'Plot',
+            width: 100,
+            headerName: 'Plot',
+            sortable: false,
+            renderCell: (params) =>
+                user?.isAdmin ? (
+                    <DialogBox name={params.row.filename} />
+                ) : null,
+        },
+
     ];
 
 
